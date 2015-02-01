@@ -1,0 +1,15 @@
+local.properties
+project.properties
+.idea
+.settings
+gen/
+target/
+muzima-ui.iml
+gen-external-apklibs/
+out/
+tmp/
+*.iml
+classes/
+*.DS_Store
+*.swp
+*.apk

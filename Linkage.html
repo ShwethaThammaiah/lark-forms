@@ -1394,11 +1394,19 @@
           for(key in messageList) {
             var messageId = key;
             var message = messageList[key];
-            var messageLink = $("<p class='alert alert-info' id=" + messageId + ">  <b> " + message.title + "<span class='glyphicon glyphicon-collapse-down pull-right'> </b> </p>");
+            var messageLink = $("<p class='alert alert-info' id=" + messageId + ">  <b> " + message.title + "<span id='expandIcon' class='glyphicon glyphicon-collapse-down pull-right'></span>  <span id='collapseIcon' class='glyphicon glyphicon-collapse-up pull-right'></span></b> </p>");
             $("#messageContainer").append(messageLink);
+            $("#" + messageId).find("#collapseIcon").hide();
             $("#" + messageId).append('<div style="display: none"> ' + message.messageHtml + '</div>');
-            $("#" + messageId).on("click", function(){
-                $(this).find("div").toggle();
+            $("#" + messageId).find("#expandIcon").on("click", function(){
+                $(this).closest("p").find("div").toggle();
+                $(this).hide();
+                $(this).siblings("#collapseIcon").show()
+               });
+               $("#" + messageId).find("#collapseIcon").on("click", function(){
+                $(this).closest("p").find("div").toggle();
+                $(this).hide();
+                $(this).siblings("#expandIcon").show()
                });
           }
 
