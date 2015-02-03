@@ -94,12 +94,9 @@ $(document).ready(function () {
     'use strict';
     var dateFormat = "dd-mm-yy";
 
-    $('form').append(
-        '<div class="form-group text-center" id="buttonSection">' +
-        '    <input class="btn btn-primary" id="save_draft" type="button" value="Save"/>' +
-        '    <input class="btn btn-primary" id="submit_form" type="button" value="Submit"/>' +
-        '</div>'
-    );
+    /*if (htmlDataStore.getStatus().toLowerCase() == 'complete') {
+        $('input, select, textarea').prop('disabled', true);
+    }*/
 
     /* Start - Toggle free text element */
     var hasFreetext = $('.has-freetext');
@@ -122,10 +119,13 @@ $(document).ready(function () {
             var errors = {};
             var pattern = /(\d{2})-(\d{2})-(\d{4})/g;
             var matches = pattern.exec($(this).val());
-            var enteredDate = new Date(matches[3], matches[2] - 1, matches[1]);
-            var today = new Date();
-            if (enteredDate <= today) {
-                errors[$(this).attr('name')] = "Please enter a date in the future.";
+            if (matches != null && matches.length > 3) {
+                var enteredDate = new Date(matches[3], matches[2] - 1, matches[1]);
+                var reference = new Date();
+                var today = new Date(reference.getFullYear(), reference.getMonth(), reference.getDate());
+                if (enteredDate <= today) {
+                    errors[$(this).attr('name')] = "Please enter a date in the future.";
+                }
             }
             toggleValidationMessages(errors);
         }
@@ -138,10 +138,13 @@ $(document).ready(function () {
             var errors = {};
             var pattern = /(\d{2})-(\d{2})-(\d{4})/g;
             var matches = pattern.exec($(this).val());
-            var enteredDate = new Date(matches[3], matches[2] - 1, matches[1]);
-            var today = new Date();
-            if (enteredDate > today) {
-                errors[$(this).attr('name')] = "Please enter a date prior or equal to today.";
+            if (matches != null && matches.length > 3) {
+                var enteredDate = new Date(matches[3], matches[2] - 1, matches[1]);
+                var reference = new Date();
+                var today = new Date(reference.getFullYear(), reference.getMonth(), reference.getDate());
+                if (enteredDate > today) {
+                    errors[$(this).attr('name')] = "Please enter a date prior or equal to today.";
+                }
             }
             toggleValidationMessages(errors);
         }
@@ -179,17 +182,8 @@ $(document).ready(function () {
     };
 
     var save = function (status, keepFormOpen) {
-        var jsonData = JSON.stringify($('form').serializeEncounterForm(), null, '\t');
-        var jsonToObject = JSON.parse(jsonData);
-        var pre = $("#json-output");
-        if (pre.length == 0) {
-            pre = document.createElement("pre");
-            $(pre).attr("id", "json-output");
-            $(pre).append(jsonData);
-            $('body').append(pre);
-        } else {
-            pre.html(jsonData);
-        }
+        var jsonData = JSON.stringify($('form').serializeEncounterForm());
+        htmlDataStore.saveHTML(jsonData, status, keepFormOpen);
     };
 
     var addValidationMessage = function () {
@@ -297,6 +291,19 @@ $(document).ready(function () {
 
     /*End- Video Capture Functionality*/
 
+    /* Start - Play video in form */
+    $('.video-player').click(function(){
+        videoComponent.openVideo($(this).attr('data-video'));
+    });
+    /* End - Play video in form */
+
+    /* Start - view Image in form */
+    $('.image-player').click(function(){
+        imagingComponent.openImage($(this).attr('data-image'));
+    });
+    /* End - view Image in form */
+
+
     /* Start - Initialize jQuery DatePicker */
 
     $('.datepicker').datepicker({
@@ -363,8 +370,12 @@ $(document).ready(function () {
             if ($.fn.isNotRequiredAndEmpty(value, element)) return true;
             var pattern = /(\d{2})-(\d{2})-(\d{4})/g;
             var matches = pattern.exec(value);
+            if (matches == null || matches.length < 4) {
+                return false;
+            }
             var enteredDate = new Date(matches[3], matches[2] - 1, matches[1]);
-            var today = new Date();
+            var reference = new Date();
+            var today = new Date(reference.getFullYear(), reference.getMonth(), reference.getDate());
             return enteredDate <= today;
         }, "Please enter a date prior or equal to today."
     );
@@ -382,8 +393,12 @@ $(document).ready(function () {
             if ($.fn.isNotRequiredAndEmpty(value, element)) return true;
             var pattern = /(\d{2})-(\d{2})-(\d{4})/g;
             var matches = pattern.exec(value);
+            if (matches == null || matches.length < 4) {
+                return false;
+            }
             var enteredDate = new Date(matches[3], matches[2] - 1, matches[1]);
-            var today = new Date();
+            var reference = new Date();
+            var today = new Date(reference.getFullYear(), reference.getMonth(), reference.getDate());
             return enteredDate > today;
         }, "Please enter a date in the future."
     );
