@@ -1654,15 +1654,12 @@
 </div>
 
 <div class="form-group text-center" id="buttonSection">
-    <input class="btn btn-primary pull-right" id="show_messages" type="button" value="Show Messages"/>;
+    <input class="btn btn-primary pull-right" id="show_messages" type="button" value="Show Messages"/>
 </div>
-
+<br>
 </form>
-
-<div id="messageContainer" tabindex="1">
-
-</div>
-
+    <div id="messageContainer">
+    </div>
 </body>
 
 <script type="text/javascript">
@@ -1746,22 +1743,15 @@ var ruleEngine = function(submittedForm,RulesList){
 
     $(document).ready(function () {
 
-   //  $("#retention_form").append('<div class="form-group text-center" id="buttonSection"></div>');
-
-   //  $("#buttonSection").append('<input class="btn btn-primary pull-right" id="show_messages" type="button" value="Show Messages"/>');
-
         $('#show_messages').click(function () {
 
           var messageList = ruleEngine(getObjectForm(),assembleRuleListForForm());
-          if($("#messageContainer").length > 0) {
-            $("#messageContainer").remove();
-            $("#retention_form").append("<div id = 'messageContainer'></div>");
-          }
+          $("#messageContainer").find(".message").remove();
 
           for(key in messageList) {
             var messageId = key;
             var message = messageList[key];
-            var messageLink = $("<p class='alert alert-info' id=" + messageId + ">  <b> " + message.title + "<span id='expandIcon' class='glyphicon glyphicon-collapse-down pull-right'></span>  <span id='collapseIcon' class='glyphicon glyphicon-collapse-up pull-right'></span></b> </p>");
+            var messageLink = $("<p class='alert alert-info message' id=" + messageId + ">  <b> " + message.title + "<span id='expandIcon' class='glyphicon glyphicon-collapse-down pull-right'></span>  <span id='collapseIcon' class='glyphicon glyphicon-collapse-up pull-right'></span></b> </p>");
             $("#messageContainer").append(messageLink);
             $("#" + messageId).find("#collapseIcon").hide();
             $("#" + messageId).append('<div style="display: none"> ' + message.messageHtml + '</div>');
@@ -1779,6 +1769,14 @@ var ruleEngine = function(submittedForm,RulesList){
           $('html, body').animate({
                   scrollTop: $("#messageContainer").offset().top}, 2000);
         });
+
+        $('#messageContainer').on('click', '.image-player', function(){
+            imagingComponent.openImage($(this).attr('data-image'));
+         });
+
+         $("#messageContainer").on('click','.video-player', function(){
+             videoComponent.openVideo($(this).attr('data-video'));
+         });
 
         $('#save_draft').click(function () {
             $(this).prop('disabled', true);

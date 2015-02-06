@@ -252,20 +252,20 @@ var afraidOfPossibleHIVStigmaAtAMPATHClinics = function(submittedForm){
 var message1_WhatIsHighBP = {
                     id : "Message1",
                     title : "What is high blood pressure?",
-                    messageHtml :  ' <label class="alert alert-info" id="message1"> \
-                       <ol> \
-                           High blood pressure is a condition of the heart and blood.  When blood pressure is persistently and abnormally high, doctors call this condition \'hypertension\'. \
-                           <br>High blood pressure does not always cause noticeable symptoms, but it can be a very serious disease. It can result in other serious diseases, such as heart attack, stroke, and kidney disease if not well managed. \
-                       </ol> \
-                       <input class="btn image-player" data-image = "/media/img/message1.jpg" type="button" value="show image"/> \
-                   </label>'
+                    messageHtml :  "<label class='alert alert-info' id='message1'>\
+                                      <ol>\
+                                          High blood pressure is a condition of the heart and blood.  When blood pressure is persistently and abnormally high, doctors call this condition 'hypertension'.\
+                                          <br>High blood pressure does not always cause noticeable symptoms, but it can be a very serious disease. It can result in other serious diseases, such as heart attack, stroke, and kidney disease if not well managed.\
+                                      </ol>\
+                                      <input class='btn image-player' data-image = '/media/img/message1.jpg' type='button' value='show image'/>\
+                                  </label>"
                    };
 
 var message2_WhatCausesHypertension = {
                     id : "Message2",
                     title : "Causes/predisposing factors",
                     messageHtml : '<label class="alert alert-info" id="message2"> \
-                        What Causes Hypertension?  <br> \
+                    What Causes Hypertension?  <br> \
                         Many different things can cause high blood pressure. Most commonly, it is caused by:<br> \
                         <span style="text-decoration: underline;">1. Lifestyle</span> \
                         <ol type="I"> \
@@ -279,7 +279,7 @@ var message2_WhatCausesHypertension = {
                         <ul> \
                             <li>High blood pressure runs in the immediate family.</li> \
                         </ul> \
-                        <input class="btn image-player" data-image = "media/img/message2.jpg" type="button" value="show image"/> \
+                        <input class="btn image-player" data-image = "/media/img/message2.jpg" type="button" value="show image"/> \
                     </label> <br>'
                     };
 
@@ -312,7 +312,7 @@ var message5_DrugManagement = {
                             <li>Take your drugs as prescribed by your Health Care Providers</li> \
                             <li>Adhere to your routine appointments for monitoring of blood pressure</li> \
                        </ul> \
-                        <input class="btn image-player" data-image = "media/img/message5.jpg" type="button" value="show image"/> \
+                        <input class="btn image-player" data-image = "/media/img/message5.jpg" type="button" value="show image"/> \
                     </label> <br>'
                     };
 

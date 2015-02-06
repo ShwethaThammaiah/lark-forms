@@ -531,7 +531,7 @@ var message2_WhatCausesHypertension = {
                         <ul> \
                             <li>High blood pressure runs in the immediate family.</li> \
                         </ul> \
-                        <input class="btn image-player" data-image = "media/img/message2.jpg" type="button" value="show image"/> \
+                        <input class="btn image-player" data-image = "/media/img/message2.jpg" type="button" value="show image"/> \
                     </label> <br>'
                     };
 
@@ -564,7 +564,7 @@ var message5_DrugManagement = {
                             <li>Take your drugs as prescribed by your Health Care Providers</li> \
                             <li>Adhere to your routine appointments for monitoring of blood pressure</li> \
                        </ul> \
-                        <input class="btn image-player" data-image = "media/img/message5.jpg" type="button" value="show image"/> \
+                        <input class="btn image-player" data-image = "/media/img/message5.jpg" type="button" value="show image"/> \
                     </label> <br>'
                     };
 
