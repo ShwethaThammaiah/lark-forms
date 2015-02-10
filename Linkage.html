@@ -180,7 +180,7 @@
 </div>
 <div class="form-group">
     <label for="obs.rate_personal_manner">
-        How would you rate the personal manner(courtesy, respect,sensitivity, friendliness, and attitude) of the health care provider you see <span class="required">*</span>
+        How would you rate the personal manner(courtesy, respect,sensitivity, friendliness, and attitude) of the health care provider you see at your usual health facility? <span class="required">*</span>
     </label>
     <select class="form-control" id="obs.rate_personal_manner" name="obs.rate_personal_manner"
             data-concept="9089^HEALTH CARE PROVIDER RATING, PERSONAL MANNERISM^99DCT" required="required">
@@ -193,7 +193,7 @@
 </div>
 <div class="form-group">
     <label for="obs.rate_health_manner">
-        How would you rate the health care provider's explanation of your high blood pressure and the treatment you need<span class="required">*</span>
+        How would you rate the health care provider's explanation of your high blood pressure and the treatment you need in a way that you understand?<span class="required">*</span>
     </label>
     <select class="form-control" id="obs.rate_health_manner" name="obs.rate_health_manne"
             data-concept="9090^HEALTH CARE PROVIDER RATING, EXPLANATION AND TREATMENT^99DCT" required="required">
@@ -209,7 +209,7 @@
 <h4><p>Part B: Perceived Risks/Severity</h4>
 <div class="form-group">
     <label for="obs.told_having_hypertension">
-        Have you ever been told by a health care provider that you might have high blood pressure or hypertension <span class="required">*</span>
+        Have you ever been told by a health care provider that you might have high blood pressure or hypertensio? <span class="required">*</span>
     </label>
     <select class="form-control yesSelect noSelect" id="obs.told_having_hypertension" name="obs.told_having_hypertension"
             data-concept="9092^PREVIOUS FINDING, HIGH BLOOD PRESSURE^99DCT" required="required">
@@ -221,7 +221,7 @@
 </div>
 <div class="form-group yesSectionToShow combinationOneSelect">
     <label for="obs.having_hypertension">
-        Do you believe that you have high blood pressure <span class="required">*</span>
+        Do you believe that you might have high blood pressure? <span class="required">*</span>
     </label>
     <select class="form-control" id="obs.having_hypertension" name="obs.having_hypertension"
             data-concept="9092^PATIENT REPORTED HIGH BLOOD PRESSURE^99DCT" required="required">
@@ -233,7 +233,7 @@
 </div>
 <div class="form-group">
     <label for="obs.perception_of_bp">
-        What is your perception of high blood pressure <span class="required">*</span>
+        What is your perception of high blood pressure? <span class="required">*</span>
     </label>
     <select class="form-control" id="obs.perception_of_bp" name="obs.perception_of_bp"
             data-concept="9097^PERCEPTION OF HIGH BLOOD PRESSURE^99DCT" required="required">
@@ -247,7 +247,7 @@
 
 <div class="form-group">
     <label for="obs.told_having_hypertension">
-        Do you know any signs and symptoms of high blood pressure?  <span class="required">*</span>
+        Do you know any signs and symptoms of high blood pressure? <span class="required">*</span>
     </label>
     <select class="form-control yesSelect noSelect" id="pb_knowing_signs" name="pb_knowing_signs"
             data-concept="9149^KNOWLEDGE OF HIGH BLOOD PRESSURE SYMPTOMS^99DCT" required="required">
@@ -1142,6 +1142,7 @@
     <label for="obs.means_to_usual_health_facility">
         Have you ever been treated rudely/shouted at by your health care provider<span class="required">*</span>
     </label>
+
     <select id = "harassed_by_health_care_provider" class="form-control yesSelect noSelect" id="obs.blood_pressure_treated" name="obs.blood_pressure_treated"
             data-concept="9130^HARASSED BY HEALTH CARE PROVIDER^99DCT" required="required">
         <option value="">...</option>
@@ -1199,13 +1200,13 @@
             <label class="font-normal">
                 <input id=reasons_were_you_harassed_na" type="checkbox"
                        data-concept="9131^REASON HARASSED BY HEALTH CARE PROVIDER^99DCT"
-                       value="7037^REFERRED FROM CLINIC^99DCT">
+                       value="1958^REFUSAL^99DCT">
                 Refused/No Answer
             </label>
         </div>
     </fieldset>
 </div>
-    </div>
+</div>
 
 </div>
 
@@ -1218,7 +1219,7 @@
         <fieldset name="9143^REASONS FOR SEEKING CARE^99DCT">
             <div class="form-group">
                 <label class="font-normal">
-                    <input id=seek_hypertension_care_na" type="checkbox"
+                    <input id="seek_hypertension_care_none" type="checkbox"
                            data-concept="9143^REASONS FOR SEEKING CARE^99DCT"
                            value=" 1107^NONE^99DCT">
                     None
@@ -1252,7 +1253,7 @@
                 <label class="font-normal">
                     <input name="seek_hypertension_care_bp" id="seek_hypertension_care_freindliness" type="checkbox"
                            data-concept="9143^REASONS FOR SEEKING CARE^99DCT"
-                           value="9137^RIENDLINESS OF THE HEALTH FACILITY STAFF^99DCT">
+                           value="9137^FRIENDLINESS OF THE HEALTH FACILITY STAFF^99DCT">
                     Friendliness of the health facility staff
                 </label>
             </div>
@@ -1287,9 +1288,14 @@
                        name="reasons_were_you_harassed_freetext" type="text"
                        data-concept="1915^FREETEXT GENERAL^99DCT">
             </div>
-
-
-
+            <div class="form-group">
+                <label class="font-normal">
+                    <input id="seek_hypertension_care_na" type="checkbox"
+                           data-concept="9143^REASONS FOR SEEKING CARE^99DCT"
+                           value="1958^REFUSAL^99DCT">
+                    Refused/No Answer
+                </label>
+            </div>
         </fieldset>
     </div>
 </div>
@@ -1776,15 +1782,37 @@
         });
         $hasOther.trigger('change');
 
-        var referralValues = ['1958^REFUSAL^99DCT'];
-        var referralAsymptomatic = ['5006^ASYMPTOMATIC^99DCT'];
-        var referralMessage = "If Asymptomatic/No Answer, it should be the only option.";
+        var refusalValue = ['1958^REFUSAL^99DCT'];
+        var asymptomaticValue = ['5006^ASYMPTOMATIC^99DCT'];
+        var messageSelectOnly = "If Asymptomatic/No Answer/Refused to answer is selected, that should be the only allowed option.";
+
         $(':checkbox[data-concept="9150^KNOWLEDGE OF HIGH BLOOD PRESSURE SYMPTOMS, SPECIFIC^99DCT"]').change(function () {
-            toggleValidationMessages(validateAlone($(this), referralValues, referralMessage)); });
+            showValidationMessages(validateAlone($(this), refusalValue, messageSelectOnly)); });
 
+        $(':checkbox[data-concept="9150^KNOWLEDGE OF HIGH BLOOD PRESSURE SYMPTOMS, SPECIFIC^99DCT"]').change(function () {
+            showValidationMessages(validateAlone($(this), asymptomaticValue, messageSelectOnly)); });
 
-        $(':checkbox[name="9150^KNOWLEDGE OF HIGH BLOOD PRESSURE SYMPTOMS, SPECIFIC^99DCT"]').change(function () {
-            toggleValidationMessages(validateAlone($(this), referralAsymptomatic, referralMessage)); });
+        $(':checkbox[data-concept="9131^REASON HARASSED BY HEALTH CARE PROVIDER^99DCT"]').change(function () {
+            showValidationMessages(validateAlone($(this), refusalValue, messageSelectOnly)); });
+
+        $(':checkbox[data-concept="9143^REASONS FOR SEEKING CARE^99DCT"]').change(function () {
+            showValidationMessages(validateAlone($(this), refusalValue, messageSelectOnly)); });
+
+        $.fn.customValidationCheck = function () {
+            var knowledgeOfHighBPSymptoms = $('fieldset[name="9150^KNOWLEDGE OF HIGH BLOOD PRESSURE SYMPTOMS, SPECIFIC^99DCT"]');
+            var reasonsHarassedByHealthCareWorker = $('fieldset[name="9131^REASON HARASSED BY HEALTH CARE PROVIDER^99DCT"]');
+            var reasonsForSeekingCare = $('fieldset[name="9143^REASONS FOR SEEKING CARE^99DCT"]');
+            var errors = $.extend({},
+                    validateSelected(knowledgeOfHighBPSymptoms),
+                    validateAlone(knowledgeOfHighBPSymptoms, refusalValue, messageSelectOnly),
+                    validateAlone(knowledgeOfHighBPSymptoms, asymptomaticValue, messageSelectOnly),
+                    validateSelected(reasonsHarassedByHealthCareWorker),
+                    validateAlone(reasonsHarassedByHealthCareWorker, refusalValue, messageSelectOnly),
+                    validateSelected(reasonsForSeekingCare),
+                    validateAlone(reasonsForSeekingCare, refusalValue, messageSelectOnly));
+            showValidationMessages(errors);
+            return $.isEmptyObject(errors);
+         };
 
 
     });
