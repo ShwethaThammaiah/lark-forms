@@ -387,7 +387,7 @@
     </fieldset>
 </div>
 <div class="form-group">
-    <span><strong>Exercise more<span class="required">*</span></strong></span>
+    <span><strong>Exercise more(E.g. Digging,running etc.)<span class="required">*</span></strong></span>
 
     <fieldset name="7055^EXERCISE^99DCT">
         <div class="form-group">
@@ -417,7 +417,7 @@
     </fieldset>
 </div>
 <div class="form-group">
-    <span><strong>Reduce your alcohol use<span class="required">*</span></strong></span>
+    <span><strong>Reducing your alcohol use<span class="required">*</span></strong></span>
 
     <fieldset name="9100^REDUCE ALCOHOL USE^99DCT">
         <div class="form-group">
@@ -447,7 +447,7 @@
     </fieldset>
 </div>
 <div class="form-group">
-    <span><strong>Stop smoking or use of tobacco<span class="required">*</span></strong></span>
+    <span><strong>Reducing or stopping tobaco use <span class="required">*</span></strong></span>
 
     <fieldset name="7055^SMOKING CESSATION^99DCT">
         <div class="form-group">
@@ -692,7 +692,7 @@
 
 <div class="form-group">
     <label for="obs.means_to_usual_health_facility">
-        Can you tell when your blood pressure is going up or down without a blood pressure measurement by noticing how you feel <span class="required">*</span>
+        Do you think you can tell when your blood pressure is going up or down without a blood pressure measurement by noticing how you feel? <span class="required">*</span>
     </label>
     <select class="form-control yesSelect noSelect" id="obs.blood_pressure_sense" name="obs.blood_pressure_sense"
             data-concept="9109^BLOOD PRESSURE CHANGE AWARENESS WITHOUT MEASUREMENT^99DCT" required="required">
@@ -1479,7 +1479,7 @@
                 <label class="font-normal">
                     <input id=reasons_were_you_harassed_na" type="checkbox"
                            data-concept="9131^REASON HARASSED BY HEALTH CARE PROVIDER^99DCT"
-                           value="7037^REFERRED FROM CLINIC^99DCT">
+                           value="1958^REFUSAL^99DCT">
                     Refused/No Answer
                 </label>
             </div>
@@ -1546,10 +1546,18 @@
             </div>
             <div class="form-group">
                 <label class="font-normal">
+                    <input id="seek_hypertension_care_none" type="checkbox"
+                           data-concept="9143^REASONS FOR SEEKING CARE^99DCT"
+                           value=" 1107^NONE^99DCT">
+                    None
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="font-normal">
                     <input class="has-freetext" id="seek_hypertension_care_other_non_coded" type="checkbox"
                            data-concept="9143^REASONS FOR SEEKING CARE^99DCT"
                            value="5622^OTHER NON-CODED^99DCT">
-                    Other
+                    Others
                 </label>
             </div>
             <div class="form-group freetext">
@@ -1613,11 +1621,11 @@
             <option value="1958^REFUSAL^99DCT">Refused</option>
         </select>
     </div>
-    <div class="form-group ">
+    <div class="form-group" id="specific_way">
         <label for="specific_way">
             Have you thought of a specific way to do that?<span class="required">*</span>
         </label>
-        <select class="form-control" id="specific_way" name="specific_way"
+        <select class="form-control" name="specific_way"
                 data-concept="9145^PLAN TO FOLLOW INSTRUCTIONS^99DCT" required="required">
             <option value="">...</option>
             <option value="1065^YES^99DCT">Yes</option>
@@ -2144,6 +2152,27 @@ var ruleEngine = function(submittedForm,RulesList){
             $('#lifestyle_change_plan').hide();
         }
     });
+
+        var refusalValue = ['1958^REFUSAL^99DCT'];
+        var messageSelectOnly = "If Asymptomatic/No Answer/Refused to answer is selected, that should be the only allowed option.";
+
+        $(':checkbox[data-concept="9131^REASON HARASSED BY HEALTH CARE PROVIDER^99DCT"]').change(function () {
+            showValidationMessages(validateAlone($(this), refusalValue, messageSelectOnly)); });
+        $(':checkbox[data-concept="9143^REASONS FOR SEEKING CARE^99DCT"]').change(function () {
+            showValidationMessages(validateAlone($(this), refusalValue, messageSelectOnly)); });
+
+        $.fn.customValidationCheck = function () {
+            var reasonsHarassedByHealthCareWorker = $('fieldset[name="9131^REASON HARASSED BY HEALTH CARE PROVIDER^99DCT"]');
+            var reasonsForSeekingCare = $('fieldset[name="9143^REASONS FOR SEEKING CARE^99DCT"]');
+            var errors = $.extend({},
+                    validateSelected(reasonsHarassedByHealthCareWorker),
+                    validateAlone(reasonsHarassedByHealthCareWorker, refusalValue, messageSelectOnly),
+                    validateSelected(reasonsForSeekingCare),
+                    validateAlone(reasonsForSeekingCare, refusalValue, messageSelectOnly));
+            showValidationMessages(errors);
+            return $.isEmptyObject(errors);
+         };
+
     });
 </script>
 </html>
