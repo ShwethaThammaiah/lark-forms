@@ -64,33 +64,14 @@
         <label for="encounter.location_id">Encounter Location <span class="required">*</span></label>
         <select class="form-control" id="encounter.location_id" name="encounter.location_id" required="required">
             <option>...</option>
-            <option value="2">Mosoriot</option>
-            <option value="3">Turbo</option>
-            <option value="12">Teso District Hospital</option>
-            <option value="60">Chepsaita Dispensary</option>
-            <option value="65">Angurai Health Centre</option>
-            <option value="90">Changara Dispensary</option>
-            <option value="91">Malaba Dispensary</option>
-            <option value="106">Kamollo Dispensary</option>
-            <option value="110">Mogoget Dispensary</option>
-            <option value="111">Biribiriet Dispensary</option>
-            <option value="112">Itigo Dispensary</option>
-            <option value="113">Lelmokwo Dispensary</option>
-            <option value="114">Kokwet Dispensary</option>
-            <option value="115">Ngechek Dispensary</option>
-            <option value="116">Ngechek Dispensary</option>
-            <option value="117">Murgusi Dispensary</option>
-            <option value="118">Cheplasgei Dispensary</option>
-            <option value="119">Sigot Dispensary</option>
-            <option value="120">Sigot Dispensary</option>
-            <option value="121">Sugoi A Dispensary</option>
-            <option value="121">Sugoi B Dispensary</option>
-            <option value="124">Akichelesit Dispensary</option>
-            <option value="125">Aboloi Dispensary</option>
-            <option value="126">Moding Dispensary</option>
-            <option value="127">Sambut</option>
-            <option value="128">Moding Dispensary</option>
+            <option value="60">Chepsaita</option>
+            <option value="116">Cheramei</option>
             <option value="128">Ngenyilel</option>
+            <option value="137">Osorongai</option>
+            <option value="154">Sokyot</option>
+            <option value="2">Mosoriot</option>
+            <option value="111">Birbiriet</option>
+            <option value="17">Itigo</option>
         </select>
     </div>
     <div class="form-group">
@@ -117,6 +98,7 @@
                name="encounter.form_uuid" type="hidden" required="required">
     </div>
 </div>
+
 <div class="section">
 <h4><div style="text-align: center;">SECTION II</div><p>Part A: General</h4>
 <div class="place_for_health_care_detailed" id="obs.place_for_health_care_detailed"
@@ -126,7 +108,7 @@
         <label for="obs.place_for_health_care">
             Where do you usually go for health care?<span class="required">*</span>
         </label>
-        <select class="form-control specifyOther" id="obs.place_for_health_care" name="obs.place_for_health_care"
+        <select class="form-control specifyOther usual_health_care_location" id="obs.place_for_health_care" name="obs.place_for_health_care"
                 data-concept="9086^FACILITY TYPE^99DCT" required="required">
             <option value="">...</option>
             <option value="6436^DISPENSARY^99DCT">Dispensary</option>
@@ -144,8 +126,7 @@
                name="obs.place_for_health_care.freetext_general" type="text" required="required"
                data-concept="1915^FREETEXT GENERAL^99DCT">
     </div>
-</div>
-<div class="form-group">
+<div class="form-group" id="transportation_mode">
     <label for="obs.means_to_usual_health_facility">
         When you go to your usual health facility, how do you generally get there? <span class="required">*</span>
     </label>
@@ -161,7 +142,7 @@
         <option value="1958^REFUSAL^99DCT">Refused</option>
     </select>
 </div>
-<div class="form-group">
+<div class="form-group" id="time_to_travel">
     <label for="obs.how_long_to_facility">
         On average, how long does it take you to get to the facility? <span class="required">*</span>
     </label>
@@ -177,9 +158,10 @@
         <option value="1958^REFUSAL^99DCT">Refused</option>
     </select>
 </div>
-<div class="form-group">
+
+<div class="form-group" id="rate_manner_provider">
     <label for="obs.rate_personal_manner">
-        How would you rate the personal manner(courtesy, respect,sensitivity, friendliness, and attitude) of the health care provider you see at your usual health facility? <span class="required">*</span>
+        How would you rate the personal manner (courtesy, respect, sensitivity, friendliness, and attitude) of the health care provider you see at your usual health facility? <span class="required">*</span>
     </label>
     <select class="form-control" id="obs.rate_personal_manner" name="obs.rate_personal_manner"
             data-concept="9089^HEALTH CARE PROVIDER RATING, PERSONAL MANNERISM^99DCT" required="required">
@@ -190,9 +172,9 @@
         <option value="1958^REFUSAL^99DCT">Refused</option>
     </select>
 </div>
-<div class="form-group">
+<div class="form-group" id="rate_explanation_provider">
     <label for="obs.rate_health_manner">
-        How would you rate the health care provider's explanation of your high blood pressure and the treatment you need in a way that you understand?<span class="required">*</span>
+        How would you rate the Health Care Provider's ability (at your usual health facility) to explain your health problem and the treatment you need in a way that you understand?<span class="required">*</span>
     </label>
     <select class="form-control" id="obs.rate_health_manner" name="obs.rate_health_manne"
             data-concept="9090^HEALTH CARE PROVIDER RATING, EXPLANATION AND TREATMENT^99DCT" required="required">
@@ -204,11 +186,14 @@
     </select>
 </div>
 
+</div>
+</div>
+
 <div class="section">
 <h4><p>Part B: Perceived Risks/Severity</h4>
 <div class="form-group">
     <label for="obs.told_having_hypertension">
-        Have you ever been told by a health care provider that you might have high blood pressure or hypertensio? <span class="required">*</span>
+        Have you ever been told by a health care provider that you might have high blood pressure or hypertension? <span class="required">*</span>
     </label>
     <select class="form-control yesSelect noSelect" id="obs.told_having_hypertension" name="obs.told_having_hypertension"
             data-concept="9092^PREVIOUS FINDING, HIGH BLOOD PRESSURE^99DCT" required="required">
@@ -373,11 +358,11 @@
 </div>
 
 
-<label>If you have high blood pressure and you don't seek care, do you think you are at risk of...
+<label>If you haven't received care for high blood pressure, do you think you are likely to:
 </label>
 
 <div class="form-group">
-    <span><strong>Having a stroke<span class="required">*</span></strong></span>
+    <span><strong>Have a stroke?<span class="required">*</span></strong></span>
 
     <fieldset name="1878^STROKE^99DCT">
         <div class="form-group">
@@ -408,7 +393,7 @@
 </div>
 
 <div class="form-group">
-    <span><strong>Develop kidney failure<span class="required">*</span></strong></span>
+    <span><strong>Develop kidney failure and need dialysis?<span class="required">*</span></strong></span>
 
     <fieldset name="1885^RENAL FAILURE^99DCT">
         <div class="form-group">
@@ -438,7 +423,7 @@
     </fieldset>
 </div>
 <div class="form-group">
-    <span><strong>Develop heart disease<span class="required">*</span></strong></span>
+    <span><strong>Develop heart disease?<span class="required">*</span></strong></span>
 
     <fieldset name="6237^HEART DISEASE^99DCT">
         <div class="form-group">
@@ -474,6 +459,7 @@
 <div class="section">
 
 <h4>Part C: Perceived Barriers<br><div style="text-align: center;">
+    <br>
     Have you delayed or not sought care for your high blood pressure for any of the following reasons:
 </div> </h4>
 <div class="form-group">
@@ -539,7 +525,7 @@
 </div>
 
 <div class="form-group">
-    <span><strong>You didn’t have someone to take you<span class="required">*</span></strong></span>
+    <span><strong>You didn't have someone to take you<span class="required">*</span></strong></span>
 
     <fieldset name="820^TRANSPORT PROBLEMS^99DCT">
         <div class="form-group">
@@ -945,7 +931,7 @@
 
 <div class="section">
 <h4>Part D: Emotional Factors<br>
-    <div style="text-align: center;">Have you ever not sought care for your high blood pressure because of one or more or the following reasons</div> </h4>
+    <div style="text-align: center;">Have you ever not sought care for your high blood pressure because of one or more or the following reasons:</div> </h4>
 
 
 <div class="form-group">
@@ -980,7 +966,7 @@
 </div>
 
 <div class="form-group">
-    <span><strong>You were afraid of being screened for other disease<span class="required">*</span></strong></span>
+    <span><strong>You were afraid of being screened for other diseases<span class="required">*</span></strong></span>
 
     <fieldset name="9155^AFRAID OF SCREENING FOR DISEASES^99DCT">
         <div class="form-group">
@@ -1139,7 +1125,7 @@
 
 <div class="form-group">
     <label for="obs.means_to_usual_health_facility">
-        Have you ever been treated rudely/shouted at by your health care provider<span class="required">*</span>
+        Have you ever been treated rudely/shouted at by your health care provider (Check all that apply)<span class="required">*</span>
     </label>
 
     <select id = "harassed_by_health_care_provider" class="form-control yesSelect noSelect" id="obs.blood_pressure_treated" name="obs.blood_pressure_treated"
@@ -1318,7 +1304,6 @@
             <option value="1958^REFUSAL^99DCT">Refused</option>
         </select>
     </div>
-</div>
 </div>
 
 <div class="form-group text-center" id="buttonSection">
@@ -1818,6 +1803,25 @@
             }
         });
         $hasOther.trigger('change');
+
+        $('.usual_health_care_location').change(function () {
+
+        if(this.value != '' && this.value == "9088^NEVER BEEN TO A HEALTH FACILITY^99DCT"){
+            $('#transportation_mode').hide();
+            $("#transportation_mode").removeAttr("value");
+            $('#time_to_travel').hide();
+            $('#time_to_travel').removeAttr("value");
+            $('#rate_manner_provider').hide();
+            $('#rate_manner_provider').removeAttr("value");
+            $('#rate_explanation_provider').hide();
+            $('#rate_explanation_provider').removeAttr("value");
+        }else{
+            $('#transportation_mode').show();
+            $('#time_to_travel').show();
+            $('#rate_manner_provider').show();
+            $('#rate_explanation_provider').show();
+        }
+    });
 
         var refusalValue = ['1958^REFUSAL^99DCT'];
         var asymptomaticValue = ['5006^ASYMPTOMATIC^99DCT'];
