@@ -280,7 +280,7 @@ var assumptionOfLongQueuesAtHealthFacilityBarrier = function(submittedForm){
     var concept = "9120^PRESENT BARRIERS TO HEALTHCARE^99DCT";
     var expectedValue = "9116^WAIT AT HEALTH FACILITY^99DCT";
     if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
-       //message17
+        messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -290,7 +290,7 @@ var assumptionOfCorruptionAtHealthFacilityBarrier = function(submittedForm){
     var concept = "9120^PRESENT BARRIERS TO HEALTHCARE^99DCT";
     var expectedValue = "9117^CORRUPTION^99DCT";
     if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
-       //message17
+      messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -382,7 +382,7 @@ var afraidOfStigmaAssociatedToHighBP = function(submittedForm){
     var concept = "9127^PRESENT EMOTIONAL BARRIER TO HEALTHCARE, RECENT^99DCT";
     var expectedValue = "9123^AFRAID OF HYPERTENSION STIGMA^99DCT";
     if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
-        //message17
+       messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -392,7 +392,7 @@ var afraidOfPossibleHIVStigmaAtAMPATHClinics = function(submittedForm){
     var concept = "9127^PRESENT EMOTIONAL BARRIER TO HEALTHCARE, RECENT^99DCT";
     var expectedValue = "9124^AFRAID OF AMPATH STIGMA^99DCT";
     if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
-        //Display message17
+        messageList.push(message17_MISkills);
         messageList.push(message15_CommunityResources);
     }
     return messageList;
@@ -433,7 +433,7 @@ var notVeryConfidentOfLikelihoodOfContinuingWithCare = function(submittedForm){
     if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
         messageList.push(message4_LifestyleManagement);
         messageList.push(message5_DrugManagement);
-        //Display message17
+        messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -446,7 +446,7 @@ var noPlanAboutHowToContinueWithCare = function(submittedForm){
         messageList.push(message4_LifestyleManagement);
         messageList.push(message5_DrugManagement);
         messageList.push(message12_OvercomingBarriers);
-        //Display message17
+        messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -459,7 +459,7 @@ var notVeryConfidentAboutFollowingInstructionsGiven = function(submittedForm){
         messageList.push(message5_DrugManagement);
         messageList.push(message6_AdhereManagingSideEffects);
         messageList.push(message8_StrokeOrConsequencesOfMedicationDefault);
-        //Display message17
+        messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -471,7 +471,7 @@ var noPlanAboutHowToFollowInstructionsGiven = function(submittedForm){
     if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
         messageList.push(message8_StrokeOrConsequencesOfMedicationDefault);
         messageList.push(message12_OvercomingBarriers);
-        //Display message17
+        messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -482,7 +482,7 @@ var notVeryConfidentAboutModifyingLifestyle = function(submittedForm){
     var expectedValue = "9141^NOT VERY CONFIDENT^99DCT";
     if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
        messageList.push(message4_LifestyleManagement);
-        //Display message17
+        messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -494,7 +494,7 @@ var noPlanAboutHowToModifyLifestyle = function(submittedForm){
     if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
         messageList.push(message8_StrokeOrConsequencesOfMedicationDefault);
         messageList.push(message12_OvercomingBarriers);
-        //Display message17
+        messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -721,3 +721,11 @@ var message16_PreEclampsia = {
                          <input class="btn video-player" data-video = "/media/vids/message16.mp4" type="button" value="show video"/> \
                      </label>'
                      };
+
+var message17_MISkills = {
+                    id : "Message17",
+                    title : "Please use the motivational interviewing skills that you learned during training.",
+                    messageHtml :  ' <label class="alert alert-info" id="message17"> \
+                                               Please use the motivational interviewing skills that you learned during training. \
+                                     </label>'
+                                       };
