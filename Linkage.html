@@ -62,14 +62,14 @@
         <label for="encounter.location_id">Encounter Location <span class="required">*</span></label>
         <select class="form-control" id="encounter.location_id" name="encounter.location_id" required="required">
             <option>...</option>
-            <option value="60">Chepsaita</option>
-            <option value="116">Cheramei</option>
-            <option value="128">Ngenyilel</option>
-            <option value="137">Osorongai</option>
-            <option value="154">Sokyot</option>
-            <option value="2">Mosoriot</option>
-            <option value="111">Birbiriet</option>
-            <option value="17">Itigo</option>
+            <option value="122">Chepkemel</option>
+            <option value="118">Cheplaskei</option>
+            <option value="157">Tuigoin</option>
+            <option value="120">Sugoi A</option>
+            <option value="158">Leseru</option>
+            <option value="114">Kokwet</option>
+            <option value="159">Kosirai</option>
+            <option value="160">Mutwot</option>
         </select>
     </div>
     <div class="form-group">
@@ -1371,12 +1371,14 @@
             ruleList.push(afraidOfPossibleHIVStigmaAtAMPATHClinics);
             ruleList.push(harassedByHealthWorker);
             ruleList.push(symptomsOfHypertension);
+            ruleList.push(womenOfReproductiveAge);
+
             return ruleList;
         }
 
     $(document).ready(function () {
 
-    var provider = [
+    var provider_Kosirai = [
                 {"val":"1773-1","label":"Rael  Chelimo"},
                 {"val":"3662-4","label":"Milka Cherurto"},
                 {"val":"3663-2","label":"Lilian Chepchipchir"},
@@ -1388,6 +1390,180 @@
                 {"val":"3665-7","label":"Willy Kosgei"},
                 {"val":"3666-5","label":"Irine Sisiwa"}
     ];
+
+    var provider_Kokwet = [
+                {"val":"3667-3","label":"Angeline Jerubon"},
+                {"val":"1783-0","label":"Joan Yapsoi"},
+                {"val":"3668-1","label":"Margaret Keino"},
+                {"val":"1778-0","label":"Robert Songok"},
+                {"val":"1779-8","label":"Jackson Kiprotich"},
+                {"val":"3669-9","label":"Lorna Jerotich"},
+                {"val":"3670-7","label":"Solomon Ngetich"},
+                {"val":"3671-5","label":"Beatrice Kirwa"},
+                {"val":"3672-3","label":"Henry Kemboi"},
+                {"val":"3666-5","label":"Viola Jeptoo"}
+    ];
+
+    var provider_Mutwot = [
+                {"val":"2153-5","label":"Fridah Chepkemboi"},
+                {"val":"2146-9","label":"Mildred  Tanui"},
+                {"val":"2152-7","label":"Judith Jepchirchir"},
+                {"val":"2150-1","label":"Festus  Bitok"},
+                {"val":"2145-1","label":"Albert Kiprotich"},
+                {"val":"3657-4","label":"David  Kieni"},
+                {"val":"3658-2","label":"Irine Maru"},
+                {"val":"3659-0","label":"Eusila Chelule"},
+                {"val":"3660-8","label":"Lilian Cherop"},
+                {"val":"3661-6","label":"Bornes Chemutai"}
+    ];
+
+    var provider_Chepekemel = [
+                {"val":"1925-7","label":"Silas  Matolo Natili"},
+                {"val":"1928-1","label":"Simon Chepkwony Kipsang"},
+                {"val":"1933-1","label":"Everline Nelima Zakayo"},
+                {"val":"1927-3","label":"Zakariah Lumakanda Mutua"},
+                {"val":"1931-5","label":"Harriet Jepkemboi Sawe "},
+                {"val":"1937-2","label":"Sarah Jerop Cheruiyot"},
+                {"val":"1930-7","label":"Irene Makavila Sokoso"},
+                {"val":"1926-5","label":"Japheth Kipkemboi Kogo"},
+                {"val":"1932-3","label":"Benjamin  Kipruto Korir"},
+                {"val":"1935-6","label":"Joel Kipkemboi Korir"},
+                {"val":"3634-3","label":"Lilian Koech"},
+                {"val":"3635-0","label":"Lydia Jerubet"},
+                {"val":"3636-8","label":"Hazel  Boit"},
+                {"val":"3637-6","label":"Joan Ndombi"},
+                {"val":"3638-4","label":"Eliud Bungei"}
+    ];
+
+    var provider_Cheplaskei = [
+                {"val":"3882-8","label":"Rose Jepketer Kiplagat"},
+                {"val":"1940-6","label":"EliudKiprop Samitui"},
+                {"val":"1952-1","label":"WiliamKipchumba Sang"},
+                {"val":"1941-4","label":"Donald  Kiprop Bett"},
+                {"val":"1945-5","label":"Linda Jepkoech Rono"},
+                {"val":"3881-0","label":"Caroline Cherotich Ngetich"},
+                {"val":"1946-3","label":"Lydia Jepkosgei Yego"},
+                {"val":"3639-2","label":"AmbiliaJeptoo Martim"},
+                {"val":"3640-0","label":"Philip Kosgei "},
+                {"val":"2317-6","label":"Caroline Jepkoech"},
+                {"val":"3641-8","label":"Simon Kiptoo"},
+                {"val":"3642-6","label":"Nelly Jemutai"},
+                {"val":"3643-4","label":"Rose Rutto"},
+                {"val":"3644-2","label":"Rosbella Kurgat"},
+                {"val":"3645-9","label":"Risper Jeptum"},
+                {"val":"3646-7","label":"Jonah Rongoei"},
+                {"val":"3647-5","label":"Michael Bett"},
+                {"val":"3648-3","label":"Elfas Limo"},
+                {"val":"3649-1","label":"Wilson Letting"}
+    ];
+
+    var provider_Suigoi = [
+                {"val":"2097-4","label":"Gilbert Kipkorir Rono"},
+                {"val":"3682-2","label":"Milka Cherono Samoei"},
+                {"val":"3876-0","label":"Priscah Cherotich Kosgei"},
+                {"val":"2102-2","label":"Hosea Kipkurgat Sitienei"},
+                {"val":"3877-8","label":"Bridgid Jekorir Lagat"},
+                {"val":"3878-6","label":"Jackline Cherono Kemei"},
+                {"val":"3683-0","label":"Rebecca Jepkorir"},
+                {"val":"3684-8","label":"Samuel Kimeli Bor"},
+                {"val":"3685-5","label":"Eunice Chesang Kimoi"},
+                {"val":"3686-3","label":"Everline Cheptoo Serem"},
+                {"val":"2100-6","label":"LilianJepleting"},
+                {"val":"2104-8","label":"Rael Jepkorir"},
+                {"val":"3687-1","label":"Teresa Kurui"},
+                {"val":"3879-4","label":"Eliud Koech"},
+                {"val":"2101-4","label":"Barnabas Kimaru Koross"}
+    ];
+
+     var provider_Tuigoin = [
+                {"val":"1824-2","label":"Edward Kiprop Norman"},
+                {"val":"1825-9","label":"Peter Kipkemboi Birech"},
+                {"val":"1826-7","label":"Peter Kibet Kemboi"},
+                {"val":"3650-9","label":"Gladys Koros"},
+                {"val":"1828-3","label":"Zipporah Chebet Boit"},
+                {"val":"1829-1","label":"Mary Cherotich Barno"},
+                {"val":"3651-7","label":"Nancy Jepchirchir"},
+                {"val":"1831-7","label":"Edwin Kiplagat Letting"},
+                {"val":"1832-5","label":"Ruth Cheptoo Kitur"},
+                {"val":"1833-3","label":"Eunice Jerobon Melewa"},
+                {"val":"3652-5","label":"DorcusJeptoo Ngelechei"},
+                {"val":"3653-3","label":"Benjamin  Cheruiyot Yego"},
+                {"val":"1836-6","label":"Musa KipchumbaKoech"},
+                {"val":"1837-4","label":"Samuel Kiptanui Mzee"},
+                {"val":"3654-1","label":"Sylvenas Kiprop Kurgat"},
+                {"val":"1839-0","label":"Maximilah Jeptoo Chepkwony"},
+                {"val":"3655-8","label":"Christine  Justine Yego"},
+                {"val":"1841-6","label":"Dorcus Chepkemboi Murrey"},
+                {"val":"1842-4","label":"Issac KipngetichTimbwol"},
+                {"val":"3656-6","label":"Selly Jepkurui Cheruiyot"}
+    ];
+
+     var provider_Leseru = [
+                {"val":"1845-7","label":"Paul Kiptanui Maina"},
+                {"val":"1865-5","label":"Caroline Chepkemboi Cheruiyot"},
+                {"val":"1848-1","label":"HellenJepkemei Chirchir"},
+                {"val":"1850-7","label":"Stanley  Kipkemboi Rugut"},
+                {"val":"1851-5","label":"Josphine Kemunto Murumbi"},
+                {"val":"1863-0","label":"Mary Cheptoo Wendot"},
+                {"val":"3673-1","label":"Martim Sarah Jelimo"},
+                {"val":"1859-8","label":"Stanley  Kipleting Metto"},
+                {"val":"1862-2","label":"Rose  Jepchumba Mugun"},
+                {"val":"1861-4","label":"Lily Chepkemoi Matelong"},
+                {"val":"3674-9","label":"Beatrice Ichenihi"},
+                {"val":"3675-6","label":"Caroline Chepchumba"},
+                {"val":"1175-9","label":"Jane Jeruto"},
+                {"val":"2185-7","label":"Lilian Cherotich"},
+                {"val":"3676-4","label":"Nelly Too"},
+                {"val":"3677-2","label":"Julia Magoi"},
+                {"val":"3678-0","label":"Paul Busienei"},
+                {"val":"3679-8","label":"Silas Keronei"}
+    ];
+
+    var provider = [];
+
+     function SortByName(a, b){
+        var aName = a.label.toLowerCase();
+        var bName = b.label.toLowerCase();
+        return ((aName < bName) ? -1 : ((aName > bName) ? 1 : 0));
+     }
+
+    $('#encounter\\.location_id').change(function () {
+        if( $('#encounter\\.location_id').val() == 122) { //Chepkemel
+            provider_Chepekemel.sort(SortByName);
+            $('#encounter\\.provider_id_select').autocomplete('option', 'source', provider_Chepekemel);
+        }
+        else if( $('#encounter\\.location_id').val() == 118 ) { //Cheplaskei
+            provider_Cheplaskei.sort(SortByName);
+           $('#encounter\\.provider_id_select').autocomplete('option', 'source', provider_Cheplaskei);
+        }
+        else if( $('#encounter\\.location_id').val() == 157 ) { //Tuigoin
+           provider_Tuigoin.sort(SortByName);
+           $('#encounter\\.provider_id_select').autocomplete('option', 'source', provider_Tuigoin);
+        }
+        else if( $('#encounter\\.location_id').val() == 120 ) { //Sugoi A
+            provider_Tuigoin.sort(SortByName);
+            $('#encounter\\.provider_id_select').autocomplete('option', 'source', provider_Suigoi);
+        }
+        else if( $('#encounter\\.location_id').val() == 158 ) { //Leseru
+            provider_Leseru.sort(SortByName);
+            $('#encounter\\.provider_id_select').autocomplete('option', 'source', provider_Leseru);
+        }
+        else if( $('#encounter\\.location_id').val() == 114 ) { //Kokwet
+            provider_Kokwet.sort(SortByName);
+            $('#encounter\\.provider_id_select').autocomplete('option', 'source', provider_Kokwet);
+        }
+        else if( $('#encounter\\.location_id').val() == 159 ) { //Kosirai
+            provider_Kosirai.sort(SortByName);
+             $('#encounter\\.provider_id_select').autocomplete('option', 'source', provider_Kosirai);
+        }
+        else if( $('#encounter\\.location_id').val() == 160 ) { //Mutwot
+            provider_Mutwot.sort(SortByName);
+             $('#encounter\\.provider_id_select').autocomplete('option', 'source', provider_Mutwot);;
+        }
+
+    });
+
+
 
     $('#encounter\\.provider_id_select').autocomplete({
         source: provider,
@@ -1449,6 +1625,14 @@
          $("#messageContainer").on('click','.video-player', function(){
              videoComponent.openVideo($(this).attr('data-video'));
          });
+
+
+        var dateFormat = "dd-mm-yy";
+        var currentDate = $.datepicker.formatDate(dateFormat, new Date());
+        var encounterDatetime = $('#encounter\\.encounter_datetime');
+        if ($(encounterDatetime).val() == "") {
+            $(encounterDatetime).val(currentDate);
+        }
 
         $('#save_draft').click(function () {
             $(this).prop('disabled', true);
@@ -2111,6 +2295,90 @@ var afraidOfPossibleHIVStigmaAtAMPATHClinics = function(submittedForm){
     return messageList;
 }
 
+var womenOfReproductiveAge = function(submittedForm){
+    var messageList = [];
+    var $patientSex = $('#patient\\.sex');
+    var dateFormat = "dd-mm-yy";
+    var currentDate = new Date();
+    var patientBirthDate = new Date($('#patient\\.birthdate').val());
+    var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+    var diffDays = Math.round(Math.abs((currentDate.getTime() - patientBirthDate.getTime()) / (oneDay)));
+    var diffYears = Math.round(diffDays/365);
+    if ($patientSex.val() == 'F' && diffYears > 15 && diffYears < 49) {
+        messageList.push(message16_PreEclampsia);
+    }
+    return messageList;
+}
+
+                     //Rules : Part B: Perceived Risks/Severity
+
+var perceptionHighBPDoesNotCauseStroke = function(submittedForm){
+    var messageList = [];
+    var concept = "9112^ABSENCE OF PERCEIVED RISK OF HIGH BLOOD PRESSURE WITHOUT CARE^99DCT";
+    var expectedValue = "1878^STROKE^99DCT"
+    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
+        messageList.push(message7_ComplicationsOfHypertension);
+        messageList.push(message8_StrokeOrConsequencesOfMedicationDefault);
+    }
+    return messageList;
+}
+
+var perceptionHighBPDoesNotCauseKidneyFailure = function(submittedForm){
+    var messageList = [];
+    var concept = "9112^ABSENCE OF PERCEIVED RISK OF HIGH BLOOD PRESSURE WITHOUT CARE^99DCT";
+    var expectedValue = "1885^RENAL FAILURE^99DCT";
+    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
+        messageList.push(message7_ComplicationsOfHypertension);
+        messageList.push(message9_KidneyFailureConsequences);
+    }
+    return messageList;
+}
+
+var perceptionHighBPDoesNotCauseHeartDisease = function(submittedForm){
+    var messageList = [];
+    var concept = "9112^ABSENCE OF PERCEIVED RISK OF HIGH BLOOD PRESSURE WITHOUT CARE^99DCT";
+    var expectedValue = "6237^HEART DISEASE^99DCT"
+    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
+        messageList.push(message7_ComplicationsOfHypertension);
+    }
+    return messageList;
+}
+
+//Rules : Part C: Perceived Barriers
+
+var lackOfTransportationBarrier = function(submittedForm){
+    var messageList = [];
+    var concept = "9120^PRESENT BARRIERS TO HEALTHCARE^99DCT";
+    var expectedValue = "820^TRANSPORT PROBLEMS^99DCT";
+    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
+        messageList.push(message12_OvercomingBarriers);
+        messageList.push(message15_CommunityResources);
+    }
+    return messageList;
+}
+
+var haveOtherImportantExpensesBarrier = function(submittedForm){
+    var messageList = [];
+    var concept = "9120^PRESENT BARRIERS TO HEALTHCARE^99DCT";
+    var expectedValue = "9114^OTHER EXPENSES^99DCT";
+    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
+        messageList.push(message10_CostEffectivenessInEarlyTreatment);
+        messageList.push(message12_OvercomingBarriers);
+        messageList.push(message13_MoneyManagementTool);
+    }
+    return messageList;
+}
+
+var harassedByHealthWorker = function(submittedForm){
+    var messageList = [];
+    var concept = "9130^HARASSED BY HEALTH CARE PROVIDER^99DCT";
+    var expectedValue = "1065^YES^99DCT";
+    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
+        messageList.push(message12_OvercomingBarriers);
+    }
+    return messageList;
+}
+
 //Messages
 
 var message1_WhatIsHighBP = {
@@ -2334,73 +2602,6 @@ var message16_PreEclampsia = {
                      </label>'
                      };
 
-                     //Rules : Part B: Perceived Risks/Severity
 
-var perceptionHighBPDoesNotCauseStroke = function(submittedForm){
-    var messageList = [];
-    var concept = "9112^ABSENCE OF PERCEIVED RISK OF HIGH BLOOD PRESSURE WITHOUT CARE^99DCT";
-    var expectedValue = "1878^STROKE^99DCT"
-    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
-        messageList.push(message7_ComplicationsOfHypertension);
-        messageList.push(message8_StrokeOrConsequencesOfMedicationDefault);
-    }
-    return messageList;
-}
-
-var perceptionHighBPDoesNotCauseKidneyFailure = function(submittedForm){
-    var messageList = [];
-    var concept = "9112^ABSENCE OF PERCEIVED RISK OF HIGH BLOOD PRESSURE WITHOUT CARE^99DCT";
-    var expectedValue = "1885^RENAL FAILURE^99DCT";
-    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
-        messageList.push(message7_ComplicationsOfHypertension);
-        messageList.push(message9_KidneyFailureConsequences);
-    }
-    return messageList;
-}
-
-var perceptionHighBPDoesNotCauseHeartDisease = function(submittedForm){
-    var messageList = [];
-    var concept = "9112^ABSENCE OF PERCEIVED RISK OF HIGH BLOOD PRESSURE WITHOUT CARE^99DCT";
-    var expectedValue = "6237^HEART DISEASE^99DCT"
-    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
-        messageList.push(message7_ComplicationsOfHypertension);
-    }
-    return messageList;
-}
-
-//Rules : Part C: Perceived Barriers
-
-var lackOfTransportationBarrier = function(submittedForm){
-    var messageList = [];
-    var concept = "9120^PRESENT BARRIERS TO HEALTHCARE^99DCT";
-    var expectedValue = "820^TRANSPORT PROBLEMS^99DCT";
-    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
-        messageList.push(message12_OvercomingBarriers);
-        messageList.push(message15_CommunityResources);
-    }
-    return messageList;
-}
-
-var haveOtherImportantExpensesBarrier = function(submittedForm){
-    var messageList = [];
-    var concept = "9120^PRESENT BARRIERS TO HEALTHCARE^99DCT";
-    var expectedValue = "9114^OTHER EXPENSES^99DCT";
-    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
-        messageList.push(message10_CostEffectivenessInEarlyTreatment);
-        messageList.push(message12_OvercomingBarriers);
-        messageList.push(message13_MoneyManagementTool);
-    }
-    return messageList;
-}
-
-var harassedByHealthWorker = function(submittedForm){
-    var messageList = [];
-    var concept = "9130^HARASSED BY HEALTH CARE PROVIDER^99DCT";
-    var expectedValue = "1065^YES^99DCT";
-    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
-        messageList.push(message12_OvercomingBarriers);
-    }
-    return messageList;
-}
 </script>
 </html>
