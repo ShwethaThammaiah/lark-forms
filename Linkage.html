@@ -1363,6 +1363,7 @@
             ruleList.push(nobodyToWatchOverChildrenBarrier);
             ruleList.push(traditionalHerbalMedicineBarrier);
             ruleList.push(otherSourcesOfMedicineBarrier);
+            ruleList.push(presenceOfCorruptionAtHealthFacility);
             ruleList.push(beliefOfHealingByFaithBarrier);
             ruleList.push(afraidOfOutcomeOfScreeningForHighBP);
             ruleList.push(afraidOfChronicNatureOfHighBP);
@@ -1372,6 +1373,8 @@
             ruleList.push(harassedByHealthWorker);
             ruleList.push(symptomsOfHypertension);
             ruleList.push(womenOfReproductiveAge);
+            ruleList.push(allResponsesInPartEShouldDisplayMISkillsMessage);
+            ruleList.push(notConfidentAboutFollowingInstructionsOfHealthCareProvider);
 
             return ruleList;
         }
@@ -2007,15 +2010,11 @@
     });
 
         var refusalValue = ['1958^REFUSAL^99DCT'];
-        var asymptomaticValue = ['5006^ASYMPTOMATIC^99DCT'];
         var noneValue = ['1107^NONE^99DCT'];
-        var messageSelectOnly = "If Asymptomatic/No Answer/Refused to answer is selected, that should be the only allowed option.";
+        var messageSelectOnly = "If No Answer/Refused to answer is selected, that should be the only allowed option.";
 
         $(':checkbox[data-concept="9150^KNOWLEDGE OF HIGH BLOOD PRESSURE SYMPTOMS, SPECIFIC^99DCT"]').change(function () {
             showValidationMessages(validateAlone($(this), refusalValue, messageSelectOnly)); });
-
-        $(':checkbox[data-concept="9150^KNOWLEDGE OF HIGH BLOOD PRESSURE SYMPTOMS, SPECIFIC^99DCT"]').change(function () {
-            showValidationMessages(validateAlone($(this), asymptomaticValue, messageSelectOnly)); });
 
         $(':checkbox[data-concept="9131^REASON HARASSED BY HEALTH CARE PROVIDER^99DCT"]').change(function () {
             showValidationMessages(validateAlone($(this), refusalValue, messageSelectOnly)); });
@@ -2033,7 +2032,6 @@
             var errors = $.extend({},
                     validateSelected(knowledgeOfHighBPSymptoms),
                     validateAlone(knowledgeOfHighBPSymptoms, refusalValue, messageSelectOnly),
-                    validateAlone(knowledgeOfHighBPSymptoms, asymptomaticValue, messageSelectOnly),
                     validateSelected(reasonsHarassedByHealthCareWorker),
                     validateAlone(reasonsHarassedByHealthCareWorker, refusalValue, messageSelectOnly),
                     validateSelected(reasonsForSeekingCare),
@@ -2152,6 +2150,7 @@ var assumptionOfLongQueueAndWaitTimeBarrier = function(submittedForm){
     var expectedValue = "9116^WAIT AT HEALTH FACILITY^99DCT";
     if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
         messageList.push(message15_CommunityResources);
+        messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -2226,6 +2225,16 @@ var otherSourcesOfMedicineBarrier = function(submittedForm){
     return messageList;
 }
 
+var presenceOfCorruptionAtHealthFacility = function(submittedForm) {
+    var messageList = [];
+    var concept = "9120^PRESENT BARRIERS TO HEALTHCARE^99DCT";
+    var expectedValue = "9117^CORRUPTION^99DCT";
+    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
+         messageList.push(message17_MISkills);
+    }
+    return messageList;
+    }
+
 var beliefOfHealingByFaithBarrier = function(submittedForm){
     var messageList = [];
     var concept = "9120^PRESENT BARRIERS TO HEALTHCARE^99DCT";
@@ -2246,6 +2255,7 @@ var afraidOfOutcomeOfScreeningForHighBP = function(submittedForm){
        messageList.push(message4_LifestyleManagement);
        messageList.push(message10_CostEffectivenessInEarlyTreatment);
        messageList.push(message12_OvercomingBarriers);
+       messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -2291,6 +2301,7 @@ var afraidOfPossibleHIVStigmaAtAMPATHClinics = function(submittedForm){
     var expectedValue = "9124^AFRAID OF AMPATH STIGMA^99DCT";
     if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
         messageList.push(message15_CommunityResources);
+        messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -2309,6 +2320,15 @@ var womenOfReproductiveAge = function(submittedForm){
     }
     return messageList;
 }
+
+//Part E: Motivation
+
+var allResponsesInPartEShouldDisplayMISkillsMessage = function(submittedForm){
+    var messageList = [];
+    messageList.push(message17_MISkills);
+    return messageList;
+}
+
 
                      //Rules : Part B: Perceived Risks/Severity
 
@@ -2375,6 +2395,18 @@ var harassedByHealthWorker = function(submittedForm){
     var expectedValue = "1065^YES^99DCT";
     if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
         messageList.push(message12_OvercomingBarriers);
+    }
+    return messageList;
+}
+
+//Part F :Confidence
+
+var notConfidentAboutFollowingInstructionsOfHealthCareProvider = function(submittedForm){
+    var messageList = [];
+    var concept = "9144^ABILITY TO FOLLOW MEDICAL ADVICE^99DCT";
+    var expectedValue = "9141^NOT VERY CONFIDENT^99DCT";
+    if(ruleIsSatisfied(concept,expectedValue,submittedForm)){
+        messageList.push(message17_MISkills);
     }
     return messageList;
 }
@@ -2602,6 +2634,12 @@ var message16_PreEclampsia = {
                      </label>'
                      };
 
-
+var message17_MISkills = {
+                    id : "Message17",
+                    title : "Please use the motivational interviewing skills that you learned during training.",
+                    messageHtml :  ' <label class="alert alert-info" id="message17"> \
+                                               Please use the motivational interviewing skills that you learned during training. \
+                                     </label>'
+                    };
 </script>
 </html>
